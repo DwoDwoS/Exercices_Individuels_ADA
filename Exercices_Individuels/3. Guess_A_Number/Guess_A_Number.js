@@ -18,9 +18,17 @@ function didIWin(givenNumber) {
     }
 }
 
+let result = givenNumber;
+
 alert(didIWin(givenNumber))
 
-function gamePlay() {
+function gamePlay(statement) {
+    if(result == 22) {
+        return True;
+    } 
+    else{
+        return False;
+    }
 }
 
-gamePlay()
+alert(gamePlay(result))
