@@ -1,12 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guess A Number</title>
-    <link src="Guess_A_Number.js" defer>
+    <script defer src="Guess_A_Number.js"></script>
+    <link rel="stylesheet" href="Guess_A_NumberStyle.css">
 </head>
 <body>
+    <h1>Bienvenue dans "Guess A Number"</h1>
+    <p><strong>Joueur 2</strong> : Trouvez le nombre choisis par le <b>joueur 1</b> ! A vous de jouer !</p><br/>
     
+    <p class="player2" style="display:none"></p><br/>
+
+    <p id="input-range-paragraph">
+        0 < <input id="number" min="1" max="49" /> < 50
+    </p>
+
+    <button id="submit">Valider</button>
+    <button id="restart" style="display:none">Rejouer</button>
 </body>
 </html>
