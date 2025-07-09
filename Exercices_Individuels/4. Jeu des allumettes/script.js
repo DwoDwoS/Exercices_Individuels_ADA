@@ -38,36 +38,85 @@
 // Etape 4: Rajout d'un deuxième joueur
 
 // Fonction pour retirer les allumettes
+// function removeMatches(left, numberOfMatchesToRemove) {
+//   return left - numberOfMatchesToRemove;
+// }
+
+// // Fonction de jeu à deux joueurs
+// function playWithTwoPlayers() {
+//   let matchesLeft = 50;
+//   let currentPlayer = 1;
+
+//   while (matchesLeft > 0) {
+//     let choice = parseInt(prompt(`Joueur ${currentPlayer}, il reste ${matchesLeft} allumettes. Combien souhaites-tu en retirer, de 1 à 6 ?`));
+
+//     // Validation du choix
+//     while (isNaN(choice) || choice < 1 || choice > 6 || choice > matchesLeft) {
+//       choice = parseInt(prompt(`Choix invalide, Joueur ${currentPlayer}. Tu peux retirer entre 1 et 6 allumettes sans dépasser ${matchesLeft}. Réessaie :`));
+//     }
+
+//     // On indique au jeu ce qu'il doit faire avec l'information à savoir soustraire le nombre donné à la quantité
+//     matchesLeft = removeMatches(matchesLeft, choice);
+//     console.log(`Joueur ${currentPlayer} a retiré ${choice} allumette(s). Il en reste ${matchesLeft}.`);
+
+//     if (matchesLeft === 0) {
+//       alert(`Félicitations Joueur ${currentPlayer}, tu as gagné !`);
+//       break;
+//     }
+
+//     // Changer de joueur (1 → 2, 2 → 1)
+//     currentPlayer = currentPlayer === 1 ? 2 : 1;
+//   }
+// }
+
+// Lance le jeu à deux joueurs
+// playWithTwoPlayers();
+
+// Etape 5: Pour multijoueurs
+
+// Fonction pour retirer les allumettes
 function removeMatches(left, numberOfMatchesToRemove) {
   return left - numberOfMatchesToRemove;
 }
 
-// Fonction de jeu à deux joueurs
-function playWithTwoPlayers() {
+// Fonction pour demander le nombre de joueurs
+function askNumberOfPlayers() {
+  let numberOfPlayers;
+  do {
+    numberOfPlayers = parseInt(prompt("Combien de joueurs ? (minimum 2)"));
+  } while (isNaN(numberOfPlayers) || numberOfPlayers < 2);
+  return numberOfPlayers;
+}
+
+// Fonction pour lancer une partie en multijoueurs
+function multiplayers() {
   let matchesLeft = 50;
+  const PLAYERS_FOR_THIS_GAME = askNumberOfPlayers();
   let currentPlayer = 1;
 
   while (matchesLeft > 0) {
-    let choice = parseInt(prompt(`Joueur ${currentPlayer}, il reste ${matchesLeft} allumettes. Combien souhaites-tu en retirer, de 1 à 6 ?`));
+    let choice;
 
-    // Validation du choix
-    while (isNaN(choice) || choice < 1 || choice > 6 || choice > matchesLeft) {
-      choice = parseInt(prompt(`Choix invalide, Joueur ${currentPlayer}. Tu peux retirer entre 1 et 6 allumettes sans dépasser ${matchesLeft}. Réessaie :`));
-    }
+    // Demander un nombre valide à retirer
+    do {
+      choice = parseInt(prompt(`Joueur ${currentPlayer}, il reste ${matchesLeft} allumette(s). Combien veux-tu en retirer (1 à 6) ?`));
+    } while (isNaN(choice) || choice < 1 || choice > 6 || choice > matchesLeft);
 
-    // On indique au jeu ce qu'il doit faire avec l'information à savoir soustraire le nombre donné à la quantité
+    // On indique ce qu'il reste
     matchesLeft = removeMatches(matchesLeft, choice);
-    console.log(`Joueur ${currentPlayer} a retiré ${choice} allumette(s). Il en reste ${matchesLeft}.`);
+    console.log(`Joueur ${currentPlayer} a retiré ${choice} allumette(s). Il reste ${matchesLeft}.`);
 
+    // On applique la condition de victoire
     if (matchesLeft === 0) {
-      alert(`Félicitations Joueur ${currentPlayer}, tu as gagné !`);
+      console.log(`Joueur ${currentPlayer} a gagné !`);
+      alert(`Joueur ${currentPlayer} a gagné !`);
       break;
     }
 
-    // Changer de joueur (1 → 2, 2 → 1)
-    currentPlayer = currentPlayer === 1 ? 2 : 1;
+    // On gère le passage d'un joueur à l'autre
+    currentPlayer = (currentPlayer % PLAYERS_FOR_THIS_GAME) + 1;
   }
 }
 
-// Lance le jeu à deux joueurs
-playWithTwoPlayers();
+// Lance la fonction multijoueurs
+multiplayers();
