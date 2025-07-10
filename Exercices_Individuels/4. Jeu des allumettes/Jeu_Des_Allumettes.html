@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu des Allumettes</title>
+    <link rel="stylesheet" href="Jeu_Des_Allumettes.css"/>
+    <script src="Jeu_Des_Allumettes.js" defer></script>
+</head>
+<body>
+    <div class="game-container">
+    <h1>Jeu des Allumettes</h1>
+    
+    <div id="setup">
+      <label>Nombre de joueurs : </label>
+      <input type="number" id="playerCount" min="2" value="2" />
+      <button onclick="startGame()">Commencer</button>
+    </div>
+
+    <div id="game" style="display:none;">
+      <p class="matches">Allumettes restantes : <span id="matchesLeft">50</span></p>
+      <p id="currentPlayer"></p>
+      <input type="number" id="moveInput" min="1" max="6" />
+      <button onclick="playTurn()">Retirer</button>
+      <p class="error" id="errorMsg"></p>
+      <p class="winner" id="winnerMsg"></p>
+    </div>
+  </div>
+</body>
+</html>
