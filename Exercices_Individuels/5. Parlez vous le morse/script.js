@@ -44,5 +44,12 @@ function translateLatinCharacter(char) {
   return LATIN_TO_MORSE[UPPER_CHARACTER] || ''; // Retourne une chaîne vide si le caractère n'existe pas
 }
 
+// Étape 3: Encode tout un texte en morse
+function encode(text) {
+  const CHARACTERS = getLatinCharacterList(text);
+  const MORSE_CHARACTERS = CHARACTERS.map(translateLatinCharacter);
+  return MORSE_CHARACTERS.join(' ');
+}
+
 // Test
-console.log(translateLatinCharacter("A")); // Résultat attendu : .-
+console.log(encode("Hello, world"));
