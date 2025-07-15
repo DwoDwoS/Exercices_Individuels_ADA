@@ -69,7 +69,25 @@ const LATIN_TO_MORSE = {
     '_':'..--.-',
     '$':'...-..-',
     '@':'.--.-.',
-    ' ':'/'
+    ' ':'/',
+    'À': '.--.-',
+    'Â': '.--.-',
+    'Ä': '.-.-',
+    'Æ': '.-.-',
+    'Ç': '-.-..',
+    'É': '..-..',
+    'È': '.-..-',
+    'Ê': '..-..',
+    'Ë': '..-..',
+    'Î': '..--',
+    'Ï': '..--',
+    'Ô': '---.',
+    'Œ': '---.',
+    'Ù': '..--',
+    'Û': '..--',
+    'Ü': '..--',
+    'Ÿ': '--..',
+    'Ñ': '--.--'
 }
 
 function translateLatinCharacter(char) {
@@ -95,34 +113,6 @@ const MORSE_TO_LATIN = {};
 for (let char in LATIN_TO_MORSE) {
   MORSE_TO_LATIN[LATIN_TO_MORSE[char]] = char;
 }
-// const MORSE_TO_LATIN = {
-//   '-': "T",
-//   '--': "M",
-//   '---': "O",
-//   '--.': "G",
-//   '--.-': "Q",
-//   '--..': "Z",
-//   '-.': "N",
-//   '-.-': "K",
-//   '-.--': "Y",
-//   '-.-.': "C",
-//   '-..': "D",
-//   '-..-': "X",
-//   '-...': "B",
-//   '.': "E",
-//   '.-': "A",
-//   '.--': "W",
-//   '.---': "J",
-//   '.--.': "P",
-//   '.-.': "R",
-//   '.-..': "L",
-//   '..': "I",
-//   '..-': "U",
-//   '..-.': "F",
-//   '...': "S",
-//   '...-': "V",
-//   '....': "H"
-// }
 
 function getMorseCharacterList(morseText) {
   return morseText.trim().split(' ');
@@ -144,6 +134,31 @@ function decode(text) {
   return DECODED_WORDS.join(' '); 
 }
 
-// Test
-console.log(encode("Hello, World!"));
-console.log(decode(".... . .-.. .-.. --- --..-- / .-- --- .-. .-.. -.. -.-.--"));
+function convertToMorse() {
+      const TEXT = document.getElementById('latinInput').value;
+      const MORSE = encode(TEXT);
+      document.getElementById('morseInput').value = MORSE;
+    }
+
+function convertToLatin() {
+    const MORSE = document.getElementById('morseInput').value;
+    const TEXT = decode(MORSE);
+    document.getElementById('latinInput').value = TEXT;
+}
+
+function toggleTranslation() {
+  const latinInput = document.getElementById("latinInput");
+  const morseInput = document.getElementById("morseInput");
+
+  // Si champ Latin rempli, on encode
+  if (latinInput.value.trim() !== "") {
+    convertToMorse();
+  }
+  // Si champ Morse rempli, on décode
+  else if (morseInput.value.trim() !== "") {
+    convertToLatin();
+  } 
+  else {
+    alert("Veuillez entrer du texte ou du morse !");
+  }
+}

@@ -4,10 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" src="style.css">
+    <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-    
+<h1>Traducteur Morse</h1>
+
+<div class="container">
+  <div class="textareas">
+    <div class="input-group">
+      <label for="latinInput">Texte</label>
+      <textarea id="latinInput" placeholder="Tape ton texte ici..."></textarea>
+    </div>
+
+    <!-- Bouton central -->
+    <div class="swap-button">
+      <button onclick="toggleTranslation()">⇄</button>
+    </div>
+
+    <div class="input-group">
+      <label for="morseInput">Morse</label>
+      <textarea id="morseInput" placeholder=".... . .-.. .-.. --- / .-- --- .-. .-.. -.."></textarea>
+    </div>
+  </div>
+</div>
 </body>
 </html>
