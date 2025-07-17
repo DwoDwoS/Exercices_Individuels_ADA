@@ -54,5 +54,30 @@ function isPalindrome(dateStr) {
 
   return CLEANED === REVERSED;
 } 
-console.log(isPalindrome("11/02/2011")); // true
-console.log(isPalindrome("03/04/2001")); // false
+// console.log(isPalindrome("11/02/2011")); // true
+// console.log(isPalindrome("03/04/2001")); // false
+
+// On reformate la date
+function formatDate(date) {
+  const DD = String(date.getDate()).padStart(2, '0');
+  const MM = String(date.getMonth() + 1).padStart(2, '0');
+  const YYYY = date.getFullYear();
+    return `${DD}/${MM}/${YYYY}`;
+}
+
+function getNextPalindromes(x) {
+  const RESULTS = [];
+  let currentDate = new Date();
+
+  while (RESULTS.length < x) {
+    currentDate.setDate(currentDate.getDate() + 1);
+
+    const FORMATTED = formatDate(currentDate);
+    if (isPalindrome(FORMATTED)) {
+      RESULTS.push(FORMATTED);
+    }
+  }
+
+  return RESULTS;
+}
+console.log(getNextPalindromes(8));
