@@ -36,10 +36,23 @@ function isValidDate(dateStr) {
   return true;
 }
 
-console.log(isValidDate("03/04/2001")); // true
-console.log(isValidDate("31/11/2020")); // false
-console.log(isValidDate("29/02/2020")); // true (année bissextile)
-console.log(isValidDate("29/02/2021")); // false
-console.log(isValidDate("03/14/2001")); // false
-console.log(isValidDate("00/01/2020")); // false
-console.log(isValidDate("31/04/2020")); // false
+// console.log(isValidDate("03/04/2001")); // true
+// console.log(isValidDate("31/11/2020")); // false
+// console.log(isValidDate("29/02/2020")); // true (année bissextile)
+// console.log(isValidDate("29/02/2021")); // false
+// console.log(isValidDate("03/14/2001")); // false
+// console.log(isValidDate("00/01/2020")); // false
+// console.log(isValidDate("31/04/2020")); // false
+
+function isPalindrome(dateStr) {
+  if(!isValidDate(dateStr)) {
+    return false;
+  }
+
+  const CLEANED = dateStr.replaceAll("/", "");
+  const REVERSED = CLEANED.split("").reverse().join("");
+
+  return CLEANED === REVERSED;
+} 
+console.log(isPalindrome("11/02/2011")); // true
+console.log(isPalindrome("03/04/2001")); // false
