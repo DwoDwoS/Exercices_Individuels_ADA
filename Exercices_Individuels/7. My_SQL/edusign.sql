@@ -19,3 +19,21 @@ INSERT INTO users (user_firstname, user_last_name, user_email) VALUES ('Ada', 'L
 INSERT INTO users (user_firstname, user_last_name, user_email) VALUES ('Beatrice', 'Worsley', 'bea@test.fr');
 INSERT INTO users (user_firstname, user_last_name, user_email) VALUES ('Bella', 'Guerin', 'bella@test.fr');
 INSERT INTO users (user_firstname, user_last_name, user_email) VALUES ('Barbara', 'Chase', 'barbara@test.fr');
+
+-- @block
+SELECT * FROM users;
+
+-- @block
+SELECT * FROM users WHERE user_firstname="Ada";
+
+-- @block
+SELECT * FROM users WHERE user_firstname LIKE 'B%';
+
+-- @block
+SELECT COUNT(*) FROM users;
+
+-- @block
+SELECT COUNT(*) FROM users WHERE user_firstname LIKE 'B%';
+
+-- @block
+SELECT user_firstname FROM users;
