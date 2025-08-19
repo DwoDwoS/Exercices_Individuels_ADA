@@ -46,3 +46,7 @@ INSERT INTO edusign (user_id, created_at) SELECT user_id, "2024-09-01 09:30:00" 
 -- @block
 SELECT * FROM edusign ORDER BY created_at DESC, user_id ASC;
 SELECT * FROM edusign WHERE created_at = "2024-05-30 09:30:00";
+
+-- @block
+SELECT created_at, COUNT(*) AS nb_users FROM edusign GROUP BY created_at ORDER BY created_at;
+SELECT COUNT(*) AS volume FROM edusign JOIN users ON edusign.user_id = users.user_id WHERE users.user_firstname="Bella";
