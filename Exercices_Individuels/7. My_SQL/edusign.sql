@@ -37,3 +37,12 @@ SELECT COUNT(*) FROM users WHERE user_firstname LIKE 'B%';
 
 -- @block
 SELECT user_firstname FROM users;
+
+-- @block
+INSERT INTO edusign (user_id,created_at) SELECT user_id, "2024-05-30 09:30:00" FROM users WHERE user_firstname="Ada";
+INSERT INTO edusign (user_id,created_at) SELECT user_id, "2024-05-30 09:30:00" FROM users WHERE user_firstname="Bella";
+INSERT INTO edusign (user_id, created_at) SELECT user_id, "2024-09-01 09:30:00" FROM users;
+
+-- @block
+SELECT * FROM edusign ORDER BY created_at DESC, user_id ASC;
+SELECT * FROM edusign WHERE created_at = "2024-05-30 09:30:00";
