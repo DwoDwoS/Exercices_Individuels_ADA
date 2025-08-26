@@ -65,67 +65,142 @@ from typing import List, Tuple
 # if __name__ == "__main__":
 #     stage_1()
 
-def stage_2():
+# def stage_2():
+#     print("=" * 60)
+#     print("ÉTAPE 2: Version étendue (4 couleurs, 8 choix)")
+#     print("=" * 60)
+    
+#     possibles_colors = ["rouge", "bleu", "vert", "jaune", "violet", "orange", "rose", "cyan"]
+#     secret_code = ["bleu", "vert", "rouge", "violet"]
+#     max_try = 12
+    
+#     def validate_try(proposal: List[str]) -> bool:
+#         if len(proposal) != 4:
+#             return False
+#         if not all(color in possibles_colors for color in proposal):
+#             return False
+#         return len(set(proposal)) == len(proposal)
+    
+#     def found_combination(proposal: List[str], code: List[str]) -> bool:
+#         return proposal == code
+    
+#     def calculate_feedback(proposal: List[str], code: List[str]) -> Tuple[int, int]:
+#         well_placed = sum(1 for i, color in enumerate(proposal) if color == code[i])
+#         proposal_colors = set(proposal)
+#         code_colors = set(code)
+#         commons_colors = len(proposal_colors & code_colors)
+#         wrong_placed = commons_colors - well_placed
+        
+#         return well_placed, wrong_placed
+    
+#     def setup_game() -> bool:
+#         print(f"Couleurs possibles: {possibles_colors}")
+#         print("Vous devez trouver 4 couleurs DIFFÉRENTES dans le bon ordre!")
+#         print()
+        
+#         number_of_try = 1
+#         while number_of_try <= max_try:
+#             print(f"Essai {number_of_try}/{max_try}")
+            
+#             try:
+#                 enter = input("Votre proposition (4 couleurs différentes): ").strip().lower()
+#                 proposal = enter.split()
+                
+#                 if not validate_try(proposal):
+#                     print("Erreur: 4 couleurs différentes parmi:", possibles_colors)
+#                     continue
+                
+#                 if found_combination(proposal, secret_code):
+#                     print(f"Parfait! Trouvé en {number_of_try} essai(s)!")
+#                     return True
+#                 else:
+#                     well_placed, wrong_placed = calculate_feedback(proposal, secret_code)
+#                     print(f"Feedback: {well_placed} bien placée(s), {wrong_placed} mal placée(s)")
+#                     number_of_try += 1
+                    
+#             except KeyboardInterrupt:
+#                 print("\nPartie interrompue!")
+#                 return False
+        
+#         print(f"Échec! Le code était: {secret_code}")
+#         return False
+
+#     setup_game()
+
+# if __name__ == "__main__":
+#     stage_2()
+
+def stage_3():
     print("=" * 60)
-    print("ÉTAPE 2: Version étendue (4 couleurs, 8 choix)")
+    print("ÉTAPE 3: Répétitions autorisées")
     print("=" * 60)
     
     possibles_colors = ["rouge", "bleu", "vert", "jaune", "violet", "orange", "rose", "cyan"]
-    secret_code = ["bleu", "vert", "rouge", "violet"]
+    secret_code = ["bleu", "bleu", "vert", "rouge"]
     max_try = 12
     
-    def validate_try(proposal: List[str]) -> bool:
+    def validate_proposal(proposal: List[str]) -> bool:
         if len(proposal) != 4:
             return False
-        if not all(color in possibles_colors for color in proposal):
-            return False
-        return len(set(proposal)) == len(proposal)
+        return all(color in possibles_colors for color in proposal)
     
-    def found_combination(proposal: List[str], code: List[str]) -> bool:
-        return proposal == code
+    def founded_combination(proposition: List[str], code: List[str]) -> bool:
+        return proposition == code
     
-    def calculate_feedback(proposal: List[str], code: List[str]) -> Tuple[int, int]:
-        well_placed = sum(1 for i, color in enumerate(proposal) if color == code[i])
-        proposal_colors = set(proposal)
-        code_colors = set(code)
-        commons_colors = len(proposal_colors & code_colors)
-        wrong_placed = commons_colors - well_placed
+    def repeated_feedback(proposal: List[str], code: List[str]) -> Tuple[int, int]:
+        code_copy = code[:]
+        prop_copy = proposal[:]
+        well_placed = 0
+        for i in range(len(prop_copy)):
+            if prop_copy[i] == code_copy[i]:
+                well_placed += 1
+                code_copy[i] = None
+                prop_copy[i] = None
+        
+        wrong_placed = 0
+        for i in range(len(prop_copy)):
+            if prop_copy[i] is not None:
+                for j in range(len(code_copy)):
+                    if code_copy[j] == prop_copy[i]:
+                        wrong_placed += 1
+                        code_copy[j] = None
+                        break
         
         return well_placed, wrong_placed
     
     def setup_game() -> bool:
         print(f"Couleurs possibles: {possibles_colors}")
-        print("Vous devez trouver 4 couleurs DIFFÉRENTES dans le bon ordre!")
+        print("Les répétitions sont maintenant autorisées!")
         print()
         
-        number_of_try = 1
-        while number_of_try <= max_try:
-            print(f"Essai {number_of_try}/{max_try}")
+        amount_of_try = 1
+        while amount_of_try <= max_try:
+            print(f"Essai {amount_of_try}/{max_try}")
             
             try:
-                enter = input("Votre proposition (4 couleurs différentes): ").strip().lower()
+                enter = input("Votre proposition (4 couleurs, répétitions OK): ").strip().lower()
                 proposal = enter.split()
                 
-                if not validate_try(proposal):
-                    print("Erreur: 4 couleurs différentes parmi:", possibles_colors)
+                if not validate_proposal(proposal):
+                    print("Erreur: 4 couleurs parmi:", possibles_colors)
                     continue
                 
-                if found_combination(proposal, secret_code):
-                    print(f"Parfait! Trouvé en {number_of_try} essai(s)!")
+                if founded_combination(proposal, secret_code):
+                    print(f"Excellent! Résolu en {amount_of_try} essai(s)!")
                     return True
                 else:
-                    well_placed, wrong_placed = calculate_feedback(proposal, secret_code)
+                    well_placed, wrong_placed = repeated_feedback(proposal, secret_code)
                     print(f"Feedback: {well_placed} bien placée(s), {wrong_placed} mal placée(s)")
-                    number_of_try += 1
+                    amount_of_try += 1
                     
             except KeyboardInterrupt:
                 print("\nPartie interrompue!")
                 return False
         
-        print(f"Échec! Le code était: {secret_code}")
+        print(f"Perdu! Le code était: {secret_code}")
         return False
-
+    
     setup_game()
 
 if __name__ == "__main__":
-    stage_2()
+    stage_3()
