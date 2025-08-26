@@ -1,5 +1,5 @@
 import random
-from typing import List
+from typing import List, Tuple
 
 def stage_1():
     print("=" * 60)
@@ -11,16 +11,25 @@ def stage_1():
     max_try = 12
     
     def validate_try(proposal: List[str]) -> bool:
-        if len(proposal) != 2:
-            return False
-        return all(color in possibles_colors for color in proposal)
+        return len(proposal) == 2 and all(color in possibles_colors for color in proposal)
     
-    def found_combination(proposal: List[str], code: List[str]) -> bool:
-        return proposal == code
+    def evaluate(proposal: List[str], code: List[str]) -> Tuple[int, int]:
+        well_placed = sum(p == c for p, c in zip(proposal, code))
+        common_colors = 0
+        code_temp = code.copy()
+        
+        for color in proposal:
+            if color in code_temp:
+                common_colors += 1
+                code_temp.remove(color)
+        
+        wrong_placed = common_colors - well_placed
+        return well_placed, wrong_placed
     
     def setup_game() -> bool:
         print(f"Couleurs possibles: {possibles_colors}")
         print(f"Vous avez {max_try} essais pour trouver la combinaison de 2 couleurs!")
+        print(f"Dans le résultat, le premier chiffre correspond au nombre de couleurs bien placées, et le second correspond aux bonnes couleurs mais mal placées !")
         print()
         
         number_of_try = 1
@@ -31,19 +40,17 @@ def stage_1():
                 enter = input("Votre proposition (ex: rouge bleu): ").strip().lower()
                 proposal = enter.split()
                 
-                if len(proposal) != 2:
-                    print("Erreur: Vous devez proposer exactement 2 couleurs!")
-                    continue
-                    
                 if not validate_try(proposal):
-                    print(f"Erreur: Utilisez seulement ces couleurs: {possibles_colors}")
+                    print(f"Erreur: Vous devez proposer exactement 2 couleurs parmi {possibles_colors}")
                     continue
                 
-                if found_combination(proposal, secret_code):
-                    print(f"Bravo! Vous avez trouvé en {number_of_try} essai(s)!")
+                well_placed, wrong_placed = evaluate(proposal, secret_code)
+                
+                if well_placed == 2:
+                    print(f"Bravo! Vous avez trouvé le code en {number_of_try} essai(s)!")
                     return True
                 else:
-                    print("Ce n'est pas la bonne combinaison. Essayez encore!")
+                    print(f"Résultat: [{well_placed}, {wrong_placed}]")
                     number_of_try += 1
                     
             except KeyboardInterrupt:
