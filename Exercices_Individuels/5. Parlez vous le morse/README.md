@@ -75,24 +75,28 @@ L’utilisateur peut entrer du texte ou du Morse et obtenir instantanément la t
 **Texte → Morse** 
 
 Entrée :
-    ```bash
     Bonjour le monde
 
 
 Sortie :
-    ```bash
+   
     -... --- -. .--- --- ..- .-. / .-.. . / -- --- -. -.. .
 
 **Morse → Texte**
 
 Entrée :
-    ```bash
+    
     .... . .-.. .-.. --- / .-- --- .-. .-.. -..
 
 
 Sortie :
-    ```bash
+    
     HELLO WORLD
+
+
+**Aperçu**
+
+![Aperçu du traducteur](Image/Preview.png)
 
 ## Améliorations possibles
 
