@@ -1,6 +1,6 @@
 # Exercice Individuel – Ada Tech School
 
-Bienvenue dans ce dépôt Git regroupant tous les exercices individuels réalisés dans le cadre des cours à [Ada Tech School](https://adatechschool.fr/) 🧠💻
+Bienvenue dans ce dépôt Git regroupant tous les exercices individuels réalisés dans le cadre des cours à [Ada Tech School](https://adatechschool.fr/)
 
 ## Structure du dépôt
 
