@@ -46,20 +46,21 @@ Chaque mode propose :
    cd ton-repo
 
 2. **Créer un environnement virtuel (optionnel mais recommandé) :**
-python -m venv venv
-source venv/bin/activate   # sous Linux / macOS
-venv\Scripts\activate      # sous Windows
+    ```bash
+    python -m venv venv
+    source venv/bin/activate   # sous Linux / macOS
+    venv\Scripts\activate      # sous Windows
 
 
 3. **Installer les dépendances :**
-
-pip install customtkinter
+    ```bash
+    pip install customtkinter
 
 **Lancer le jeu**
 
 Exécuter le fichier principal :
-
-python mastermind.py
+    ```bash
+    python mastermind.py
 
 
 Une fenêtre s’ouvrira avec le menu principal permettant de choisir un mode de jeu. Sinon, vous pouvez double cliqué sur votre fichier pour le lancer.
