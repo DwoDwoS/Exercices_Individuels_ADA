@@ -37,11 +37,21 @@ class MainMenu(ctk.CTk):
             self.stage_window = Stage4App(self)
 
         self.stage_window.protocol("WM_DELETE_WINDOW", self.on_stage_close)
+        
+        self.after(50, self.bring_stage_to_front)
+
+    def bring_stage_to_front(self):
+        if self.stage_window is not None and self.stage_window.winfo_exists():
+            self.stage_window.lift()
+            self.stage_window.focus()
+            self.lower()
 
     def on_stage_close(self):
         if self.stage_window is not None:
             self.stage_window.destroy()
             self.stage_window = None
+            self.lift()
+            self.focus()
         else: 
             self.stage_window.focus()
 
