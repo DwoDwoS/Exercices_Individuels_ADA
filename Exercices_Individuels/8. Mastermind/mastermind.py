@@ -59,7 +59,7 @@ class Stage1App(ctk.CTkToplevel):
     def __init__(self, master):
         super().__init__(master)
         self.title("Stage 1 - Simplifié")
-        self.geometry("600x400")
+        self.geometry("650x500")
         self.master = master
 
         self.colors = ["Rouge", "Bleu", "Vert", "Jaune"]
