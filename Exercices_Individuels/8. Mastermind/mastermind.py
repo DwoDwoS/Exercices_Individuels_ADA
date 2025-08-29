@@ -72,7 +72,7 @@ class ColorCombo(ctk.CTkFrame):
             "Cyan": "#44FFFF"
         }
 
-        self.combo = ctk.CTkComboBox(self, values=colors, command=self.on_color_change, width=140)
+        self.combo = ctk.CTkComboBox(self, values=colors, state="readonly", command=self.on_color_change, width=140)
         self.combo.pack(fill="x", padx=5, pady=5)
         self.combo.set(colors[0])
         self.update_color()
