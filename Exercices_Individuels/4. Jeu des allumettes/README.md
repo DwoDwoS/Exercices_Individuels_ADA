@@ -19,8 +19,10 @@ Ici, la règle est simple : **le joueur qui prend la dernière allumette gagne l
 ---
 
 ## Structure du projet
+
+.
 ├── Jeu_Des_Allumettes.html # Structure du jeu
-├── Jeu_Des_Allumettes.css # Styles
+├── Jeu_Des_Allumettes.css # Styles 
 └── Jeu_Des_Allumettes.js # Logique du jeu
 
 ---
@@ -31,23 +33,23 @@ Ici, la règle est simple : **le joueur qui prend la dernière allumette gagne l
    ```bash
    git clone https://github.com/ton-utilisateur/jeu-des-allumettes.git
 
-2. Ouvrez le fichier Jeu_Des_Allumettes.html dans votre navigateur.
+2. Ouvrez le fichier index.html dans votre navigateur.
 
-3. Jouez ! 
+3. Jouez !
 
 ## Règles du jeu
 
- - Choisissez le nombre de joueurs.
+1. Choisissez le nombre de joueurs.
 
- - Chaque joueur, à tour de rôle, retire entre 1 et 6 allumettes.
+2. Chaque joueur, à tour de rôle, retire entre 1 et 6 allumettes.
 
- - Le joueur qui prend la dernière allumette gagne la partie.
+3. Le joueur qui prend la dernière allumette gagne la partie.
 
-**Raccourci pratique**
+## Raccourci pratique
 
 Vous pouvez appuyer sur Entrée ↵ pour valider votre coup plus rapidement, sans cliquer sur le bouton Retirer.
 
-**Améliorations possibles**
+## Améliorations possibles
 
  - Choisir le nombre initial d’allumettes.
 
