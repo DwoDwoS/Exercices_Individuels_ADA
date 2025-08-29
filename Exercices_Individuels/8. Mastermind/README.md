@@ -59,8 +59,9 @@ Chaque mode propose :
 **Lancer le jeu**
 
 Exécuter le fichier principal :
+
     ```bash
-    python mastermind.py
+      python mastermind.py
 
 
 Une fenêtre s’ouvrira avec le menu principal permettant de choisir un mode de jeu. Sinon, vous pouvez double cliqué sur votre fichier pour le lancer.
@@ -109,6 +110,7 @@ Une fenêtre s’ouvrira avec le menu principal permettant de choisir un mode de
       Logic flow général :
       MainMenu -> ouverture Stage -> sélection couleurs via ColorCombo -> Valider -> check_proposal() -> feedback_text
 
+--- 
 
 ## Notes
 
