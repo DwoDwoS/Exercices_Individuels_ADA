@@ -68,7 +68,46 @@ Une fenêtre s’ouvrira avec le menu principal permettant de choisir un mode de
 ## Aperçu
 
 ![Aperçu de l'interface graphique du Menu](Image/Mastermind.png)
-![Aperçu de l'interface graphique du Mastermind](Image/RandomMastermind.png)
+![Aperçu de l'interface graphique du Mastermind](Image/Mastermind_colors.png)
+
+
+## Explications hiérarchique du code
+
+MainMenu (CTk)
+│
+├── Label "MASTERMIND PYTHON"
+├── Boutons Stage 1 à Stage 4
+└── StageWindow (variable, une seule fenêtre à la fois)
+      ├── Stage1App (CTkToplevel) ── Stage simplifié
+      │   ├── Label titre
+      │   ├── CTkTextbox feedback
+      │   ├── Frame choix couleurs
+      │   │   ├── ColorCombo (2 fois)
+      │   │   │   ├── CTkComboBox (sélection couleur)
+      │   │   │   └── Fond couleur + texte contrasté
+      │   └── Frame boutons
+      │       ├── Valider
+      │       ├── Rejouer
+      │       └── Retour au menu
+      │
+      ├── Stage2App (CTkToplevel) ── 4 couleurs différentes
+      │   └── Même structure que Stage1 mais 4 ColorCombo
+      │
+      ├── Stage3App (CTkToplevel) ── Répétitions autorisées
+      │   └── Même structure mais code_length = 4 et répétitions possibles
+      │
+      └── Stage4App (CTkToplevel) ── Code aléatoire
+          ├── Génération aléatoire du code (random.choices ou sample)
+          └── Même structure avec ColorCombo pour sélectionner les couleurs
+
+ColorCombo (CTkFrame) - utilisé dans tous les stages
+├── CTkComboBox
+│   └── Affiche la couleur choisie
+├── update_color() → met à jour le fond et le texte selon contraste
+└── get()/set() → récupérer ou définir la couleur sélectionnée
+
+Logic flow général :
+MainMenu -> ouverture Stage -> sélection couleurs via ColorCombo -> Valider -> check_proposal() -> feedback_text
 
 ## Notes
 
