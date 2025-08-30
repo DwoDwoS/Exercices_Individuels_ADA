@@ -109,7 +109,7 @@ Une fenêtre s’ouvrira avec le menu principal permettant de choisir un mode de
 
       Logic flow général :
       MainMenu -> ouverture Stage -> sélection couleurs via ColorCombo -> Valider -> check_proposal() -> feedback_text
-
+```
 --- 
 
 ## Notes
