@@ -16,7 +16,7 @@ Nous allons créer une version réduite de la base de données **Edusign**, cent
 
 ## Instructions générales
 - Vous pouvez commencer par réaliser des schémas à la main (papier/stylo) ou via un outil comme [Figjam](https://www.figma.com/).
-- Les noms de colonnes et de tables seront en **anglais** (bonne pratique), mais vous pouvez utiliser le français si vous êtes plus à l’aise (⚠️ pas d’accents ni de caractères spéciaux).
+- Les noms de colonnes et de tables seront en **anglais** (bonne pratique), mais vous pouvez utiliser le français si vous êtes plus à l’aise (pas d’accents ni de caractères spéciaux).
 - Convention : utilisez le **snake_case**.
 - Pensez à **sauvegarder vos requêtes** dans un fichier `.sql` au fur et à mesure.
 
@@ -25,7 +25,7 @@ Nous allons créer une version réduite de la base de données **Edusign**, cent
 ## Outils recommandés
 Un SQLite en ligne suffit.  
 Quelques suggestions :
-- [Simple SQLite Editor](https://simple-sqlite-editor.vercel.app/) ✅ recommandé
+- [Simple SQLite Editor](https://simple-sqlite-editor.vercel.app/) [recommandé]
 - [SQLite Online](https://sqliteonline.com/)
 - [SQL Fiddle](https://sqlfiddle.com/)
 
@@ -59,11 +59,11 @@ Séparons les données pour éviter les répétitions.
    - Remplacer les colonnes `firstname`, `lastname`, `email` par `user_id` (clé étrangère vers `users`).
 3. Insérer quelques données fictives :
 
-```sql
-INSERT INTO users (firstname, lastname, email) VALUES ('Ada', 'Lovelace', 'ada@test.fr');
-INSERT INTO users (firstname, lastname, email) VALUES ('Beatrice', 'Worsley', 'bea@test.fr');
-INSERT INTO users (firstname, lastname, email) VALUES ('Bella', 'Guerin', 'bella@test.fr');
-INSERT INTO users (firstname, lastname, email) VALUES ('Barbara', 'Chase', 'barbara@test.fr');
+   ```sql
+   INSERT INTO users (firstname, lastname, email) VALUES ('Ada', 'Lovelace', 'ada@test.fr');
+   INSERT INTO users (firstname, lastname, email) VALUES ('Beatrice', 'Worsley', 'bea@test.fr');
+   INSERT INTO users (firstname, lastname, email) VALUES ('Bella', 'Guerin', 'bella@test.fr');
+   INSERT INTO users (firstname, lastname, email) VALUES ('Barbara', 'Chase', 'barbara@test.fr');
 
 ## Étape 3 : Requêtes SQL
 
@@ -102,12 +102,11 @@ INSERT INTO users (firstname, lastname, email) VALUES ('Barbara', 'Chase', 'barb
 ---
 
 ## Organisation du projet
-
-
-├── README.md          # Consignes de l’exercice
-├── schema.png         # Schéma de la base (optionnel)
-├── edusign.sql        # Script SQL (création des tables + insertions)
-└── queries.sql        # Script SQL (requêtes de l’exercice)
+   ``` swift
+   ├── README.md          # Consignes de l’exercice
+   ├── edusign.sql        # Script SQL (création des tables + insertions)
+   └── queries.sql        # Script SQL (requêtes de l’exercice)
+```
 
 ---
 
