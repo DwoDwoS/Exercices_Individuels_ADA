@@ -1,14 +1,10 @@
-function afficherPointeSapin(hauteur) {
-  let espaces = '';
-  for (let i = 0; i < hauteur; i++) {
-    espaces += ' ';
-  }
-  console.log(espaces + '+');
+function afficherEtage(hauteur, pointe_offset) {
   
-  for (let i = 0; i < hauteur; i++) {
+  for (let i = pointe_offset; i < pointe_offset + hauteur; i++) {
     let ligne = '';
     
-    for (let j = 0; j < hauteur - 1 - i; j++) {
+    let hauteur_max = pointe_offset + hauteur;
+    for (let j = 0; j < hauteur_max - 1 - i; j++) {
       ligne += ' ';
     }
     
@@ -30,5 +26,7 @@ function afficherPointeSapin(hauteur) {
   }
 }
 
-console.log("=== Tests afficherPointeSapin ===");
-afficherPointeSapin(4);
+console.log("=== Tests afficherEtage ===");
+afficherEtage(3, 0);
+afficherEtage(3, 1);
+afficherEtage(3, 2);
