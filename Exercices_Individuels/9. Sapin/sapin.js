@@ -6,6 +6,11 @@ function afficherEtoiles(n) {
   console.log(ligne);
 }
 
-console.log("=== Tests afficherEtoiles ===");
-afficherEtoiles(2);
-afficherEtoiles(5);
+function afficherRectangle(hauteur, largeur) {
+  for (let i = 0; i < hauteur; i++) {
+    afficherEtoiles(largeur);
+  }
+}
+
+console.log("=== Tests afficherRectangle ===");
+afficherRectangle(5, 5);
