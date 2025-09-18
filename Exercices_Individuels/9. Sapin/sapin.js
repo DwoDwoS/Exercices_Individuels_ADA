@@ -1,5 +1,5 @@
 function afficherEtage(hauteur, pointe_offset, espacement) {
-  
+    
   for (let i = pointe_offset; i < pointe_offset + hauteur; i++) {
     let ligne = '';
     
@@ -30,8 +30,21 @@ function afficherEtage(hauteur, pointe_offset, espacement) {
   }
 }
 
-console.log("=== Tests afficherEtage avec alignement ===");
-afficherEtage(3, 0, 3);
-afficherEtage(3, 1, 2);
-afficherEtage(3, 2, 1);
-afficherEtage(3, 3, 0);
+function afficherSapin(etages, hauteur_etage) {
+  let espacement_max = etages - 1;
+  let espaces = '';
+  for (let i = 0; i <= espacement_max + hauteur_etage - 1; i++) {
+    espaces += ' ';
+  }
+  console.log(espaces + '+');
+  
+  for (let etage = 0; etage < etages; etage++) {
+    let pointe_offset = etage;
+    let espacement = espacement_max - etage;
+    
+    afficherEtage(hauteur_etage, pointe_offset, espacement);
+  }
+}
+
+console.log("=== Tests afficherSapin ===");
+afficherSapin(3, 3);
