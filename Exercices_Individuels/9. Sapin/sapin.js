@@ -6,11 +6,20 @@ function afficherEtoiles(n) {
   console.log(ligne);
 }
 
-function afficherRectangle(hauteur, largeur) {
-  for (let i = 0; i < hauteur; i++) {
-    afficherEtoiles(largeur);
+function afficherTriangleDroite(n) {
+  for (let i = 0; i < n; i++) {
+    if (i === 0) {
+      console.log('\\');
+    } else {
+      let ligne = '';
+      for (let j = 0; j < i; j++) {
+        ligne += '*';
+      }
+      ligne += '\\';
+      console.log(ligne);
+    }
   }
 }
 
-console.log("=== Tests afficherRectangle ===");
-afficherRectangle(5, 5);
+console.log("=== Tests afficherTriangleDroite ===");
+afficherTriangleDroite(5);
