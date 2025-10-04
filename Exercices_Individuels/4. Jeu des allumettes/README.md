@@ -19,7 +19,7 @@ Ici, la règle est simple : **le joueur qui prend la dernière allumette gagne l
 ---
 
 ## Structure du projet
-```
+```Swift
 ├── Jeu_Des_Allumettes.html # Structure du jeu
 ├── Jeu_Des_Allumettes.css # Styles 
 └── Jeu_Des_Allumettes.js # Logique du jeu
